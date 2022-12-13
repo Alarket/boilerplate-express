@@ -8,13 +8,12 @@ app.get("/", function(req, res){
   res.sendFile(__dirname+ '/views/index.html');
   app.use(express.static(__dirname + "/public"));
 })
-app.get("/json", (req, res) => {
-     if(process.env.MESSAGE_STYLE === "uppercase"){
-       res.json({"message" : "HELLO JSON"});
-     }
-     res.json({"message" : "Hello json"});
-   });
-   
+if (process.env.VAR_NAME === "allCaps") {
+    response = "Hello World".toUpperCase();
+  } else {
+    response = "Hello World";
+  }
+
 module.exports = app;
 
 
